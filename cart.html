@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="/assets/css/styles.css" />
   <script src="/assets/js/3f950a1575.js" crossorigin="anonymous"></script>
   
- <title></title>
+ <title>購物車</title>
   
   
 
@@ -141,12 +141,45 @@
       <div class="row">
         <div class="col-md-9">
         
-            <div class="container-fluid  text-center ">
-  <h1 style="margin:0; font-size:150px; line-height:180px; font-weight:bold; color:rgb(92, 88, 88);">404</h1>
-  
+            <header class="card-header text-center">
 
-  <p  style="margin-top:20px;font-size: 50px;"><strong>Page Not Found :(</strong></p>
-  <p style="margin-bottom:150px;">The requested page could not be found.</p>
+    <a href="https://line.me/R/ti/p/~leoyeh1234567">
+        <h1 class="card-title">購物車</h1>
+    </a>
+</header>
+<div class="card-body">
+    <div class="simplecart-area ">
+        <div class="simplecart-cart ">
+                <div class="simpleCart_items "></div>
+            <div class="simplecart-total">
+                <p>選購數量: <span class="simpleCart_quantity"></span> 項，總金額為：<span class="simpleCart_total"></span>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <form method="post"
+        action="https://script.google.com/macros/s/AKfycbw6Ni6x4BOGBXQqAZnOQGdStN3ymMVLnYCbetR7mOUWjP6Ju1Y84T8Xj3uW-Ta99Iqa/exec">
+
+        <div class="input-group mb-3">
+            <label class="input-group-text">姓名</label>
+            <input type="text" name="Name" class="form-control" />
+        </div>
+
+        <div class="input-group mb-3">
+            <label class="input-group-text">手機號碼</label>
+            <input type="text" name="Phone" class="form-control" />
+        </div>
+
+        <div class="input-group mb-3">
+            <label class="input-group-text">Line ID</label>
+            <input type="text" name="IineID" class="form-control" />
+        </div>
+        <div class="d-grid gap-2 col-6 mx-auto">
+            <button type="submit" class="btn btn-dark" id="sendToSheet">線上預訂<span
+                    class="me-3 fa-brands fa-golang fa-2xl fa-bounce"></span></button>
+        </div>
+    </form>
 </div>
 
 
@@ -293,6 +326,45 @@
 
 
 
+
+<script src="https://www.google.com/recaptcha/api.js?render=6LcAJCApAAAAADHauZCBhQYMB-CB_A34-zECO0x2"></script>
+
+<script async src="/assets/js/checkout.js"></script>
+
+<script>
+    document.getElementById('sendToSheet').addEventListener('click', function (event) {
+        event.preventDefault();
+
+        var name = document.querySelector('input[name="Name"]').value.trim();
+        var phone = document.querySelector('input[name="Phone"]').value.trim();
+        var lineID = document.querySelector('input[name="IineID"]').value.trim();
+
+        if (name === '' || phone === '' || lineID === '') {
+            alert('请填写所有必填项！');
+            return;
+        }
+
+        var phonePattern = /^09\d{8}$/;
+        if (!phonePattern.test(phone)) {
+            alert('请输入正确的手机号格式！');
+            return;
+        }
+
+        // 触发按钮所在的表单提交
+        event.target.closest('form').submit();
+
+        // 替換成你想要跳轉的網址
+        var finishPageUrl = 'finish.html';
+
+        // 等待 1 秒後進行網頁跳轉
+        setTimeout(function () {
+            window.location.href = finishPageUrl;
+            simpleCart.empty();
+        }, 1000); // 1000 毫秒等於 1 秒
+
+        
+    });
+</script>
 
 
 
