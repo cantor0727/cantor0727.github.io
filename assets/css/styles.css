@@ -204,15 +204,12 @@ a:hover {
   -webkit-box-orient: vertical;
 }
 
-.date_left {
-  text-align: left !important;
+.links {
+  color: #2BAFB9 !important;
 }
 
-/* 手機上的靠左樣式 */
-@media (max-width: 767px) {
-  .date_left {
-    text-align: left !important;
-  }
+.links:hover {
+  background-color: rgb(228, 248, 190);
 }
 
 /*# sourceMappingURL=styles.css.map */
