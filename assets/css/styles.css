@@ -208,4 +208,11 @@ a:hover {
   text-align: left !important;
 }
 
+/* 手機上的靠左樣式 */
+@media (max-width: 767px) {
+  .date_left {
+    text-align: left !important;
+  }
+}
+
 /*# sourceMappingURL=styles.css.map */
