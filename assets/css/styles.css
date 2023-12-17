@@ -212,4 +212,9 @@ a:hover {
   background-color: rgb(228, 248, 190);
 }
 
+.fu:hover {
+  box-shadow: 0 18px 32px -18px #000;
+  transform: translateY(-6px);
+}
+
 /*# sourceMappingURL=styles.css.map */
