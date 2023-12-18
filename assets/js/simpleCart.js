@@ -1827,7 +1827,9 @@
 								// 將日期值轉換為 ISO 格式字串
 								var isoDate = new Date(dateVal).toISOString().split('T')[0];
 
-								fields['date'] = isoDate; // 將日期值添加到 fields 物件中，假設 'deliverydate' 是 simpleCart 中的日期欄位名稱
+								fields['date'] = isoDate; // 將日期值添加到 fields 物件中
+
+
 							});
 
 							// add the item

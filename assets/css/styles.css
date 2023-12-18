@@ -52,6 +52,11 @@ div.simpleCart_items table th {
 div.simpleCart_items table .item-quantity {
   text-align: center;
 }
+@media (min-width: 991px) {
+  div.simpleCart_items table .item-session {
+    text-align: center;
+  }
+}
 @media (max-width: 990px) {
   div.simpleCart_items table {
     /* Force table to not be like tables */
