@@ -10,11 +10,11 @@
   <script src="/assets/js/3f950a1575.js" crossorigin="anonymous"></script>
   
   <meta name="description"
-    content="考幾分        =60">及格    不及格 ">
+    content="Price Calculator                                            出發日期                                                        回程日期                                 ... ">
   <title></title>
   <meta property="og:title" content="IYOU♥愛遊">
   <meta property="og:description"
-    content="考幾分        =60">及格    不及格 ">
+    content="Price Calculator                                            出發日期                                                        回程日期                                 ... ">
   <meta property="og:image"
     content="https://www.iyou.tw/assets/images/og-logo-1.jpg">
   
@@ -163,24 +163,761 @@
       <div class="row">
         <div class="col-md-9">
         
-            <div id="app">
-    <h2>考幾分</h2>
-    <input type="text" v-model="score" />
-    <div v-if="score&gt;=60">及格</div>
-    <div v-if="score &lt; 60">不及格</div>
-</div>
+            <article class="card card-outline mb-4">
+    <div class="card-body">
+        <header>
+            <h4 class="card-title">Price Calculator</h4>
+        </header>
+        <div class="row">
+            <div class="col-6">
+                <label class="pt-2">出發日期</label>
+                <input type="date" class=" form-control text-start" id="startDate" onchange="updateMinEndDate()" />
+            </div>
+            <div class="col-6">
+                <label class="pt-2">回程日期</label>
+                <input type="date" class=" form-control text-start" id="endDate" onchange="calculatePrice()" />
+            </div>
+            <div class="col-4">
+                <label class="pt-2">成人</label>
+                <select class="form-select" id="adults1">
+                    
+                    <option value="0">0</option>
+                    
+                    <option value="1">1</option>
+                    
+                    <option value="2">2</option>
+                    
+                    <option value="3">3</option>
+                    
+                    <option value="4">4</option>
+                    
+                    <option value="5">5</option>
+                    
+                    <option value="6">6</option>
+                    
+                    <option value="7">7</option>
+                    
+                    <option value="8">8</option>
+                    
+                    <option value="9">9</option>
+                    
+                    <option value="10">10</option>
+                    
+                    <option value="11">11</option>
+                    
+                    <option value="12">12</option>
+                    
+                    <option value="13">13</option>
+                    
+                    <option value="14">14</option>
+                    
+                    <option value="15">15</option>
+                    
+                    <option value="16">16</option>
+                    
+                    <option value="17">17</option>
+                    
+                    <option value="18">18</option>
+                    
+                    <option value="19">19</option>
+                    
+                    <option value="20">20</option>
+                    
+                </select>
+            </div>
+            <div class="col-4">
+                <label class="pt-2">半票</label>
+                <select class="form-select" id="seniors1">
+                    
+                    <option value="0">0</option>
+                    
+                    <option value="1">1</option>
+                    
+                    <option value="2">2</option>
+                    
+                    <option value="3">3</option>
+                    
+                    <option value="4">4</option>
+                    
+                    <option value="5">5</option>
+                    
+                    <option value="6">6</option>
+                    
+                    <option value="7">7</option>
+                    
+                    <option value="8">8</option>
+                    
+                    <option value="9">9</option>
+                    
+                    <option value="10">10</option>
+                    
+                    <option value="11">11</option>
+                    
+                    <option value="12">12</option>
+                    
+                    <option value="13">13</option>
+                    
+                    <option value="14">14</option>
+                    
+                    <option value="15">15</option>
+                    
+                    <option value="16">16</option>
+                    
+                    <option value="17">17</option>
+                    
+                    <option value="18">18</option>
+                    
+                    <option value="19">19</option>
+                    
+                    <option value="20">20</option>
+                    
+                </select>
+            </div>
+            <div class="col-4">
+                <label class="pt-2">嬰兒票</label>
+                <select class="form-select" id="children1">
+                    
+                    <option value="0">0</option>
+                    
+                    <option value="1">1</option>
+                    
+                    <option value="2">2</option>
+                    
+                    <option value="3">3</option>
+                    
+                    <option value="4">4</option>
+                    
+                    <option value="5">5</option>
+                    
+                    <option value="6">6</option>
+                    
+                    <option value="7">7</option>
+                    
+                    <option value="8">8</option>
+                    
+                    <option value="9">9</option>
+                    
+                    <option value="10">10</option>
+                    
+                    <option value="11">11</option>
+                    
+                    <option value="12">12</option>
+                    
+                    <option value="13">13</option>
+                    
+                    <option value="14">14</option>
+                    
+                    <option value="15">15</option>
+                    
+                    <option value="16">16</option>
+                    
+                    <option value="17">17</option>
+                    
+                    <option value="18">18</option>
+                    
+                    <option value="19">19</option>
+                    
+                    <option value="20">20</option>
+                    
+                </select>
+            </div>
+        </div>
 
-<script src="https://cdn.jsdelivr.net/npm/vue@2.7.14"></script>
+        <div class="row">
+
+            <div class="col-4">
+                <label class="pt-2">雙人房</label>
+                <select class="form-select" id="q2">
+                    
+                    <option value="0">0</option>
+                    
+                    <option value="1">1</option>
+                    
+                    <option value="2">2</option>
+                    
+                    <option value="3">3</option>
+                    
+                    <option value="4">4</option>
+                    
+                </select>
+            </div>
+
+            <div class="col-4">
+                <label class="pt-2">四人房</label>
+                <select class="form-select" id="q4">
+                    
+                    <option value="0">0</option>
+                    
+                    <option value="1">1</option>
+                    
+                    <option value="2">2</option>
+                    
+                    <option value="3">3</option>
+                    
+                    <option value="4">4</option>
+                    
+                </select>
+            </div>
+
+            <div class="col-4">
+                <label class="pt-2">加床</label>
+                <select class="form-select" id="q0">
+                    
+                    <option value="0">0</option>
+                    
+                    <option value="1">1</option>
+                    
+                    <option value="2">2</option>
+                    
+                    <option value="3">3</option>
+                    
+                    <option value="4">4</option>
+                    
+                    <option value="5">5</option>
+                    
+                    <option value="6">6</option>
+                    
+                </select>
+            </div>
+
+        </div>
+
+        <div class="row">
+            <div class="col-12">
+                <label class="pt-2">機車數</label>
+                <select class="form-select" id="moto_number">
+                    
+                    <option value="0">0</option>
+                    
+                    <option value="1">1</option>
+                    
+                    <option value="2">2</option>
+                    
+                    <option value="3">3</option>
+                    
+                    <option value="4">4</option>
+                    
+                    <option value="5">5</option>
+                    
+                    <option value="6">6</option>
+                    
+                    <option value="7">7</option>
+                    
+                    <option value="8">8</option>
+                    
+                    <option value="9">9</option>
+                    
+                    <option value="10">10</option>
+                    
+                    <option value="11">11</option>
+                    
+                    <option value="12">12</option>
+                    
+                    <option value="13">13</option>
+                    
+                    <option value="14">14</option>
+                    
+                    <option value="15">15</option>
+                    
+                    <option value="16">16</option>
+                    
+                    <option value="17">17</option>
+                    
+                    <option value="18">18</option>
+                    
+                    <option value="19">19</option>
+                    
+                    <option value="20">20</option>
+                    
+                </select>
+            </div>
+
+        </div>
+
+        <div class="row">
+            <div class="col-6">
+                <label class="pt-2">地點</label>
+                <select class="form-select" id="location">
+                    <option value="Taipei">台北</option>
+                    <option value="Taichung">台中</option>
+                    <option value="Chiayi">嘉義</option>
+                    <option value="Tainan">台南</option>
+                    <option value="Kaohsiung">高雄</option>
+                </select>
+            </div>
+            <div class="col-6">
+                <label class="pt-2">大人</label>
+                <select class="form-select" id="adults">
+                    
+                    <option value="0">0</option>
+                    
+                    <option value="1">1</option>
+                    
+                    <option value="2">2</option>
+                    
+                    <option value="3">3</option>
+                    
+                    <option value="4">4</option>
+                    
+                    <option value="5">5</option>
+                    
+                    <option value="6">6</option>
+                    
+                    <option value="7">7</option>
+                    
+                    <option value="8">8</option>
+                    
+                    <option value="9">9</option>
+                    
+                    <option value="10">10</option>
+                    
+                    <option value="11">11</option>
+                    
+                    <option value="12">12</option>
+                    
+                    <option value="13">13</option>
+                    
+                    <option value="14">14</option>
+                    
+                    <option value="15">15</option>
+                    
+                    <option value="16">16</option>
+                    
+                    <option value="17">17</option>
+                    
+                    <option value="18">18</option>
+                    
+                    <option value="19">19</option>
+                    
+                    <option value="20">20</option>
+                    
+                </select>
+            </div>
+            <div class="col-6">
+                <label class="pt-2">敬老</label>
+                <select class="form-select" id="seniors">
+                    
+                    <option value="0">0</option>
+                    
+                    <option value="1">1</option>
+                    
+                    <option value="2">2</option>
+                    
+                    <option value="3">3</option>
+                    
+                    <option value="4">4</option>
+                    
+                    <option value="5">5</option>
+                    
+                    <option value="6">6</option>
+                    
+                    <option value="7">7</option>
+                    
+                    <option value="8">8</option>
+                    
+                    <option value="9">9</option>
+                    
+                    <option value="10">10</option>
+                    
+                    <option value="11">11</option>
+                    
+                    <option value="12">12</option>
+                    
+                    <option value="13">13</option>
+                    
+                    <option value="14">14</option>
+                    
+                    <option value="15">15</option>
+                    
+                    <option value="16">16</option>
+                    
+                    <option value="17">17</option>
+                    
+                    <option value="18">18</option>
+                    
+                    <option value="19">19</option>
+                    
+                    <option value="20">20</option>
+                    
+                </select>
+            </div>
+            <div class="col-6">
+                <label class="pt-2">兒童</label>
+                <select class="form-select" id="children">
+                    
+                    <option value="0">0</option>
+                    
+                    <option value="1">1</option>
+                    
+                    <option value="2">2</option>
+                    
+                    <option value="3">3</option>
+                    
+                    <option value="4">4</option>
+                    
+                    <option value="5">5</option>
+                    
+                    <option value="6">6</option>
+                    
+                    <option value="7">7</option>
+                    
+                    <option value="8">8</option>
+                    
+                    <option value="9">9</option>
+                    
+                    <option value="10">10</option>
+                    
+                    <option value="11">11</option>
+                    
+                    <option value="12">12</option>
+                    
+                    <option value="13">13</option>
+                    
+                    <option value="14">14</option>
+                    
+                    <option value="15">15</option>
+                    
+                    <option value="16">16</option>
+                    
+                    <option value="17">17</option>
+                    
+                    <option value="18">18</option>
+                    
+                    <option value="19">19</option>
+                    
+                    <option value="20">20</option>
+                    
+                </select>
+            </div>
+        </div>
+
+
+
+        <div class="row">
+            <div class="col-6">
+                <label class="pt-2">汽車種類</label>
+                <select class="form-select" id="carType">
+                    <option value="vios">TOYOTA VIOS/YARIS 1.5</option>
+                    <option value="newvios">TOYOTA NEWVIOS 1.5</option>
+                    <option value="tiida">NISSAN TIIDA 1.6</option>
+                    <option value="altis">TOYOTA ALTIS 1.8</option>
+                    <option value="outlander">三菱 OUTLANDER 2.4CC</option>
+                    <option value="siarex">現代九人座SIAREX2.5CC</option>
+                </select>
+            </div>
+            <div class="col-6">
+                <label class="pt-2">汽車數</label>
+                <select class="form-select" id="quantity">
+                    
+                    <option value="0">0</option>
+                    
+                    <option value="1">1</option>
+                    
+                    <option value="2">2</option>
+                    
+                    <option value="3">3</option>
+                    
+                    <option value="4">4</option>
+                    
+                    <option value="5">5</option>
+                    
+                    <option value="6">6</option>
+                    
+                    <option value="7">7</option>
+                    
+                    <option value="8">8</option>
+                    
+                    <option value="9">9</option>
+                    
+                    <option value="10">10</option>
+                    
+                    <option value="11">11</option>
+                    
+                    <option value="12">12</option>
+                    
+                    <option value="13">13</option>
+                    
+                    <option value="14">14</option>
+                    
+                    <option value="15">15</option>
+                    
+                    <option value="16">16</option>
+                    
+                    <option value="17">17</option>
+                    
+                    <option value="18">18</option>
+                    
+                    <option value="19">19</option>
+                    
+                    <option value="20">20</option>
+                    
+                </select>
+            </div>
+
+        </div>
+
+        <div class="row">
+            <div class="col-6">
+                <label class="pt-2">汽車種類</label>
+                <select class="form-select" id="carType1">
+                    <option value="vios">TOYOTA VIOS/YARIS 1.5</option>
+                    <option value="newvios">TOYOTA NEWVIOS 1.5</option>
+                    <option value="tiida">NISSAN TIIDA 1.6</option>
+                    <option value="altis">TOYOTA ALTIS 1.8</option>
+                    <option value="outlander">三菱 OUTLANDER 2.4CC</option>
+                    <option value="siarex">現代九人座SIAREX2.5CC</option>
+                </select>
+            </div>
+            <div class="col-6">
+                <label class="pt-2">汽車數</label>
+                <select class="form-select" id="quantity1">
+                    
+                    <option value="0">0</option>
+                    
+                    <option value="1">1</option>
+                    
+                    <option value="2">2</option>
+                    
+                    <option value="3">3</option>
+                    
+                    <option value="4">4</option>
+                    
+                    <option value="5">5</option>
+                    
+                    <option value="6">6</option>
+                    
+                    <option value="7">7</option>
+                    
+                    <option value="8">8</option>
+                    
+                    <option value="9">9</option>
+                    
+                    <option value="10">10</option>
+                    
+                    <option value="11">11</option>
+                    
+                    <option value="12">12</option>
+                    
+                    <option value="13">13</option>
+                    
+                    <option value="14">14</option>
+                    
+                    <option value="15">15</option>
+                    
+                    <option value="16">16</option>
+                    
+                    <option value="17">17</option>
+                    
+                    <option value="18">18</option>
+                    
+                    <option value="19">19</option>
+                    
+                    <option value="20">20</option>
+                    
+                </select>
+            </div>
+
+        </div>
+
+
+        <div class="pt-3">
+
+            <p id="roomDisplay"></p>
+            <p id="priceDisplay"></p>
+            <p id="cost"></p>
+            <p id="dalta"></p>
+            <p id="carDisplay"></p>
+            <p id="carDisplay1"></p>
+            <p id="allDisplay"></p>
+        </div>
+    </div>
+</article>
+<!-- /.card -->
 
 <script>
-var app = new Vue ({
-    delimiters:['${','}'],
-    el:'#app',
-    data:{
-        message:'Hello World',
-        score:0,
+
+
+    // 获取所有需要监听变动的输入框
+    const inputs = document.querySelectorAll(' #adults1, #seniors1, #children1,#moto_number,#carType,#quantity,#carType1,#quantity1,#q0,#q2,#q4,#location,#adults,#seniors,#children');
+
+    // 为每个输入框添加 change 事件监听器
+    inputs.forEach(input => {
+        input.addEventListener('change', calculatePrice);
+    });
+
+    function calculatePrice() {
+
+
+        const location = document.getElementById('location').value;
+        const adults = parseInt(document.getElementById('adults').value);
+        const seniors = parseInt(document.getElementById('seniors').value);
+        const children = parseInt(document.getElementById('children').value);
+
+        // 將城市與票價對應好
+        const ticketPrices = {
+            Taipei: { adult: 4362, senior: 2181, child: 3272 },
+            Taichung: { adult: 3329, senior: 1665, child: 2497 },
+            Chiayi: { adult: 3262, senior: 1632, child: 2446 },
+            Tainan: { adult: 3208, senior: 1605, child: 2406 },
+            Kaohsiung: { adult: 3731, senior: 1866, child: 2798 }
+        };
+
+        // 計算機票成本
+        const totalCost =
+            adults * ticketPrices[location].adult +
+            seniors * ticketPrices[location].senior +
+            children * ticketPrices[location].child;
+
+        cost.textContent = `機票成本： ${totalCost.toLocaleString()}`;
+
+        //計算船票成本
+
+        const startDateInput = document.getElementById('startDate');
+        const endDateInput = document.getElementById('endDate');
+        const priceDisplay = document.getElementById('priceDisplay');
+        const adults1 = parseInt(document.getElementById('adults1').value);
+        const seniors1 = parseInt(document.getElementById('seniors1').value);
+        const children1 = parseInt(document.getElementById('children1').value);
+        const moto_number = parseInt(document.getElementById('moto_number').value);
+
+
+        const startDate = new Date(startDateInput.value);
+        const endDate = new Date(endDateInput.value);
+
+        const startTimestamp = startDate.getTime();
+        const endTimestamp = endDate.getTime();
+
+        const today = new Date();
+        const todayTimestamp = today.getTime();
+
+        if (endTimestamp < startTimestamp) {
+            endDateInput.value = startDateInput.value;
+        }
+
+        const startDay = startDate.getDay();
+        const endDay = endDate.getDay();
+        let totalPrice = 1200;
+        let SwPrice = 0;
+        let SsPrice = 0;
+        let EwPrice = 0;
+        let EsPrice = 0;
+        if (startDay === 5 || startDay === 6) {
+            SwPrice = 150;
+        }
+
+        if (endDay === 0 || endDay === 1) {
+            EwPrice = 150;
+        }
+
+        const specialDates = [
+            [new Date('2024-04-04').getTime(), new Date('2024-04-07').getTime()],
+            [new Date('2024-06-08').getTime(), new Date('2024-06-10').getTime()]
+        ];
+
+        const isSpecialDate = specialDates.some(dateRange => {
+            return startTimestamp >= dateRange[0] && startTimestamp <= dateRange[1];
+        });
+
+        if (isSpecialDate) {
+            SsPrice = 250;
+        }
+
+        const isSpecialEndDate = specialDates.some(dateRange => {
+            return endTimestamp >= dateRange[0] && endTimestamp <= dateRange[1];
+        });
+
+        if (isSpecialEndDate) {
+            EsPrice = 250;
+        }
+        totalPrice = Math.max(SwPrice, SsPrice) + Math.max(EwPrice, EsPrice) + totalPrice;
+        boatcost = totalPrice * adults1 + 975 * seniors1 + 195 * children1
+        priceDisplay.textContent = `船票成本： ${boatcost}`;
+
+        // 計算機車成本
+        dal = (endTimestamp - startTimestamp) / (24 * 60 * 60 * 1000);
+        moto_cost = (dal * 250 + 150) * moto_number + 100 * Math.ceil(moto_number / 3);
+        dalta.textContent = ` 機車成本： ${moto_cost}`;
+
+        //計算汽車成本
+        const carType = document.getElementById('carType').value;
+        const quantity = parseInt(document.getElementById('quantity').value);
+
+        const prices = {
+            vios: 1200,
+            newvios: 1300,
+            tiida: 1400,
+            altis: 1500,
+            outlander: 2000,
+            siarex: 2500
+        };
+
+        const carPrice = prices[carType] * quantity * (dal + 1);
+        carDisplay.textContent = `汽車成本： ${carPrice}`;
+
+        const carType1 = document.getElementById('carType1').value;
+        const quantity1 = parseInt(document.getElementById('quantity1').value);
+
+        const prices1 = {
+            vios: 1200,
+            newvios: 1300,
+            tiida: 1400,
+            altis: 1500,
+            outlander: 2000,
+            siarex: 2500
+        };
+
+        const carPrice1 = prices[carType1] * quantity1 * (dal + 1);
+        carDisplay1.textContent = `汽車成本： ${carPrice1}`;
+
+        //計算房間成本
+        const q2 = parseInt(document.getElementById('q2').value);
+        const q4 = parseInt(document.getElementById('q4').value);
+        const q0 = parseInt(document.getElementById('q0').value);
+        const roomPrice = (q2 * 2625 + q4 * 3900 + q0 * 500) * dal;
+        roomDisplay.textContent = `房間成本： ${roomPrice}`;
+
+        allcost = totalCost + boatcost + moto_cost + carPrice + carPrice1 + roomPrice
+        allDisplay.textContent = `總報價： ${allcost}`;
+
+
     }
-});
+
+    function updateMinEndDate() {
+        const startDateInput = document.getElementById('startDate');
+        const endDateInput = document.getElementById('endDate');
+
+        endDateInput.min = startDateInput.value;
+        endDateInput.value = startDateInput.value; // 设置回程日期为出发日期
+
+        calculatePrice();
+    }
+
+    function updateMinReturnDate() {
+        const startDateInput = document.getElementById('startDate');
+        const endDateInput = document.getElementById('endDate');
+
+        const today = new Date();
+        const todayFormatted = formatDate(today);
+
+        startDateInput.min = todayFormatted;
+        startDateInput.value = todayFormatted;
+
+        endDateInput.min = todayFormatted;
+        endDateInput.value = todayFormatted; // 设置回程日期初始值为今天
+
+        calculatePrice();
+    }
+
+    function formatDate(date) {
+        const yyyy = date.getFullYear();
+        const mm = String(date.getMonth() + 1).padStart(2, '0');
+        const dd = String(date.getDate()).padStart(2, '0');
+        return `${yyyy}-${mm}-${dd}`;
+    }
+
+    updateMinReturnDate();
+
+
 
 </script>
 
@@ -324,6 +1061,10 @@ var app = new Vue ({
 <script src="/assets/js/jquery-2.2.4.min.js"></script>
 <script src="/assets/js/simpleCart.js"></script>
 <script async src="/assets/js/main.js"></script>
+
+
+
+
 
 
 
