@@ -10,11 +10,11 @@
   <script src="/assets/js/3f950a1575.js" crossorigin="anonymous"></script>
   
   <meta name="description"
-    content="報價單                            出發日期                                        回程日期                                        聯航船票-成人                            {% ... ">
+    content="報價單                            出發日期                                        回程日期                                                    雙人房                       ... ">
   <title>報價單</title>
   <meta property="og:title" content="報價單">
   <meta property="og:description"
-    content="報價單                            出發日期                                        回程日期                                        聯航船票-成人                            {% ... ">
+    content="報價單                            出發日期                                        回程日期                                                    雙人房                       ... ">
   <meta property="og:image"
     content="https://www.iyou.tw/assets/images/og-logo-1.jpg">
   
@@ -23,7 +23,7 @@
   <link rel="apple-touch-icon" href="/assets/images/apple-logo.jpg">
 
 
-  <meta property="og:url" content="https://www.iyou.tw/cal.html">
+  <meta property="og:url" content="https://www.iyou.tw/calfly.html">
   <meta property="og:type" content="website">
 
 
@@ -53,151 +53,7 @@
             <label class="pt-2">回程日期</label>
             <input type="date" class=" form-control text-start" id="endDate" onchange="calculatePrice()" />
         </div>
-        <div class="col-4">
-            <label class="pt-2">聯航船票-成人</label>
-            <select class="form-select" id="adults1">
-                
-                <option value="0">0</option>
-                
-                <option value="1">1</option>
-                
-                <option value="2">2</option>
-                
-                <option value="3">3</option>
-                
-                <option value="4">4</option>
-                
-                <option value="5">5</option>
-                
-                <option value="6">6</option>
-                
-                <option value="7">7</option>
-                
-                <option value="8">8</option>
-                
-                <option value="9">9</option>
-                
-                <option value="10">10</option>
-                
-                <option value="11">11</option>
-                
-                <option value="12">12</option>
-                
-                <option value="13">13</option>
-                
-                <option value="14">14</option>
-                
-                <option value="15">15</option>
-                
-                <option value="16">16</option>
-                
-                <option value="17">17</option>
-                
-                <option value="18">18</option>
-                
-                <option value="19">19</option>
-                
-                <option value="20">20</option>
-                
-            </select>
-        </div>
-        <div class="col-4">
-            <label class="pt-2">船票-半票</label>
-            <select class="form-select" id="seniors1">
-                
-                <option value="0">0</option>
-                
-                <option value="1">1</option>
-                
-                <option value="2">2</option>
-                
-                <option value="3">3</option>
-                
-                <option value="4">4</option>
-                
-                <option value="5">5</option>
-                
-                <option value="6">6</option>
-                
-                <option value="7">7</option>
-                
-                <option value="8">8</option>
-                
-                <option value="9">9</option>
-                
-                <option value="10">10</option>
-                
-                <option value="11">11</option>
-                
-                <option value="12">12</option>
-                
-                <option value="13">13</option>
-                
-                <option value="14">14</option>
-                
-                <option value="15">15</option>
-                
-                <option value="16">16</option>
-                
-                <option value="17">17</option>
-                
-                <option value="18">18</option>
-                
-                <option value="19">19</option>
-                
-                <option value="20">20</option>
-                
-            </select>
-        </div>
-        <div class="col-4">
-            <label class="pt-2">船票-未滿3歲</label>
-            <select class="form-select" id="children1">
-                
-                <option value="0">0</option>
-                
-                <option value="1">1</option>
-                
-                <option value="2">2</option>
-                
-                <option value="3">3</option>
-                
-                <option value="4">4</option>
-                
-                <option value="5">5</option>
-                
-                <option value="6">6</option>
-                
-                <option value="7">7</option>
-                
-                <option value="8">8</option>
-                
-                <option value="9">9</option>
-                
-                <option value="10">10</option>
-                
-                <option value="11">11</option>
-                
-                <option value="12">12</option>
-                
-                <option value="13">13</option>
-                
-                <option value="14">14</option>
-                
-                <option value="15">15</option>
-                
-                <option value="16">16</option>
-                
-                <option value="17">17</option>
-                
-                <option value="18">18</option>
-                
-                <option value="19">19</option>
-                
-                <option value="20">20</option>
-                
-            </select>
-        </div>
-    </div>
+        
 
     <div class="row">
 
@@ -610,7 +466,6 @@
         </div>
         <div class="offcanvas-body">
             <p id="roomDisplay"></p>
-            <p id="priceDisplay"></p>
             <p id="cost"></p>
             <p id="dalta"></p>
             <p id="carDisplay"></p>
@@ -623,11 +478,12 @@
 
 </div>
 
+
 <script>
 
 
     // 获取所有需要监听变动的输入框
-    const inputs = document.querySelectorAll(' #adults1, #seniors1, #children1,#moto_number,#carType,#quantity,#carType1,#quantity1,#q0,#q2,#q4,#location,#adults,#seniors,#children');
+    const inputs = document.querySelectorAll(' #moto_number,#carType,#quantity,#carType1,#quantity1,#q0,#q2,#q4,#location,#adults,#seniors,#children');
 
     // 为每个输入框添加 change 事件监听器
     inputs.forEach(input => {
@@ -665,10 +521,6 @@
 
         const startDateInput = document.getElementById('startDate');
         const endDateInput = document.getElementById('endDate');
-        const priceDisplay = document.getElementById('priceDisplay');
-        const adults1 = parseInt(document.getElementById('adults1').value);
-        const seniors1 = parseInt(document.getElementById('seniors1').value);
-        const children1 = parseInt(document.getElementById('children1').value);
         const moto_number = parseInt(document.getElementById('moto_number').value);
 
 
@@ -681,48 +533,9 @@
         const today = new Date();
         const todayTimestamp = today.getTime();
 
-        if (endTimestamp < startTimestamp) {
-            endDateInput.value = startDateInput.value;
-        }
+       
 
-        const startDay = startDate.getDay();
-        const endDay = endDate.getDay();
-        let totalPrice = 1200;
-        let SwPrice = 0;
-        let SsPrice = 0;
-        let EwPrice = 0;
-        let EsPrice = 0;
-        if (startDay === 5 || startDay === 6) {
-            SwPrice = 150;
-        }
-
-        if (endDay === 0 || endDay === 1) {
-            EwPrice = 150;
-        }
-
-        const specialDates = [
-            [new Date('2024-04-04').getTime(), new Date('2024-04-07').getTime()],
-            [new Date('2024-06-08').getTime(), new Date('2024-06-10').getTime()]
-        ];
-
-        const isSpecialDate = specialDates.some(dateRange => {
-            return startTimestamp >= dateRange[0] && startTimestamp <= dateRange[1];
-        });
-
-        if (isSpecialDate) {
-            SsPrice = 250;
-        }
-
-        const isSpecialEndDate = specialDates.some(dateRange => {
-            return endTimestamp >= dateRange[0] && endTimestamp <= dateRange[1];
-        });
-
-        if (isSpecialEndDate) {
-            EsPrice = 250;
-        }
-        totalPrice = Math.max(SwPrice, SsPrice) + Math.max(EwPrice, EsPrice) + totalPrice;
-        boatcost = totalPrice * adults1 + 975 * seniors1 + 195 * children1
-        priceDisplay.textContent = `船票成本： ${boatcost} = ${totalPrice} * ${adults1} + 975 * ${seniors1} + 195 * ${children1}`;
+        
 
         // 計算機車成本
         dal = (endTimestamp - startTimestamp) / (24 * 60 * 60 * 1000);
@@ -769,7 +582,7 @@
         roomDisplay.textContent = `房間成本： ${roomPrice} = ( ${q2} * 2625 + ${q4} * 3900 + ${q0} * 500 ) * ${dal}`;
 
         // 總報價
-        allcost = totalCost + boatcost + moto_cost + carPrice + carPrice1 + roomPrice
+        allcost = totalCost  + moto_cost + carPrice + carPrice1 + roomPrice
         allDisplay.textContent = `總價： ${allcost}`;
         allDisplay1.textContent = `總價： ${allcost}`;
 
@@ -814,7 +627,7 @@
 
 
 </script>
-
+</div>
 
       
       </div>

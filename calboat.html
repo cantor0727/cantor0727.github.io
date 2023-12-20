@@ -23,7 +23,7 @@
   <link rel="apple-touch-icon" href="/assets/images/apple-logo.jpg">
 
 
-  <meta property="og:url" content="https://www.iyou.tw/cal.html">
+  <meta property="og:url" content="https://www.iyou.tw/calboat.html">
   <meta property="og:type" content="website">
 
 
@@ -310,164 +310,6 @@
 
     </div>
 
-    <div class="row">
-        <div class="col-6">
-            <label class="pt-2">飛機起飛地點</label>
-            <select class="form-select" id="location">
-                <option value="Taipei">台北</option>
-                <option value="Taichung">台中</option>
-                <option value="Chiayi">嘉義</option>
-                <option value="Tainan">台南</option>
-                <option value="Kaohsiung">高雄</option>
-            </select>
-        </div>
-        <div class="col-6">
-            <label class="pt-2">飛機-成人票</label>
-            <select class="form-select" id="adults">
-                
-                <option value="0">0</option>
-                
-                <option value="1">1</option>
-                
-                <option value="2">2</option>
-                
-                <option value="3">3</option>
-                
-                <option value="4">4</option>
-                
-                <option value="5">5</option>
-                
-                <option value="6">6</option>
-                
-                <option value="7">7</option>
-                
-                <option value="8">8</option>
-                
-                <option value="9">9</option>
-                
-                <option value="10">10</option>
-                
-                <option value="11">11</option>
-                
-                <option value="12">12</option>
-                
-                <option value="13">13</option>
-                
-                <option value="14">14</option>
-                
-                <option value="15">15</option>
-                
-                <option value="16">16</option>
-                
-                <option value="17">17</option>
-                
-                <option value="18">18</option>
-                
-                <option value="19">19</option>
-                
-                <option value="20">20</option>
-                
-            </select>
-        </div>
-        <div class="col-6">
-            <label class="pt-2">飛機-敬老票</label>
-            <select class="form-select" id="seniors">
-                
-                <option value="0">0</option>
-                
-                <option value="1">1</option>
-                
-                <option value="2">2</option>
-                
-                <option value="3">3</option>
-                
-                <option value="4">4</option>
-                
-                <option value="5">5</option>
-                
-                <option value="6">6</option>
-                
-                <option value="7">7</option>
-                
-                <option value="8">8</option>
-                
-                <option value="9">9</option>
-                
-                <option value="10">10</option>
-                
-                <option value="11">11</option>
-                
-                <option value="12">12</option>
-                
-                <option value="13">13</option>
-                
-                <option value="14">14</option>
-                
-                <option value="15">15</option>
-                
-                <option value="16">16</option>
-                
-                <option value="17">17</option>
-                
-                <option value="18">18</option>
-                
-                <option value="19">19</option>
-                
-                <option value="20">20</option>
-                
-            </select>
-        </div>
-        <div class="col-6">
-            <label class="pt-2">飛機-兒童票</label>
-            <select class="form-select" id="children">
-                
-                <option value="0">0</option>
-                
-                <option value="1">1</option>
-                
-                <option value="2">2</option>
-                
-                <option value="3">3</option>
-                
-                <option value="4">4</option>
-                
-                <option value="5">5</option>
-                
-                <option value="6">6</option>
-                
-                <option value="7">7</option>
-                
-                <option value="8">8</option>
-                
-                <option value="9">9</option>
-                
-                <option value="10">10</option>
-                
-                <option value="11">11</option>
-                
-                <option value="12">12</option>
-                
-                <option value="13">13</option>
-                
-                <option value="14">14</option>
-                
-                <option value="15">15</option>
-                
-                <option value="16">16</option>
-                
-                <option value="17">17</option>
-                
-                <option value="18">18</option>
-                
-                <option value="19">19</option>
-                
-                <option value="20">20</option>
-                
-            </select>
-        </div>
-    </div>
-
-
 
     <div class="row">
         <div class="col-12">
@@ -611,7 +453,6 @@
         <div class="offcanvas-body">
             <p id="roomDisplay"></p>
             <p id="priceDisplay"></p>
-            <p id="cost"></p>
             <p id="dalta"></p>
             <p id="carDisplay"></p>
             <p id="carDisplay1"></p>
@@ -627,7 +468,7 @@
 
 
     // 获取所有需要监听变动的输入框
-    const inputs = document.querySelectorAll(' #adults1, #seniors1, #children1,#moto_number,#carType,#quantity,#carType1,#quantity1,#q0,#q2,#q4,#location,#adults,#seniors,#children');
+    const inputs = document.querySelectorAll(' #adults1, #seniors1, #children1,#moto_number,#carType,#quantity,#carType1,#quantity1,#q0,#q2,#q4');
 
     // 为每个输入框添加 change 事件监听器
     inputs.forEach(input => {
@@ -637,29 +478,6 @@
     function calculatePrice() {
 
 
-        const location = document.getElementById('location').value;
-        const adults = parseInt(document.getElementById('adults').value);
-        const seniors = parseInt(document.getElementById('seniors').value);
-        const children = parseInt(document.getElementById('children').value);
-
-        // 將城市與票價對應好
-        const ticketPrices = {
-            Taipei: { adult: 4362, senior: 2181, child: 3272 },
-            Taichung: { adult: 3329, senior: 1665, child: 2497 },
-            Chiayi: { adult: 3262, senior: 1632, child: 2446 },
-            Tainan: { adult: 3208, senior: 1605, child: 2406 },
-            Kaohsiung: { adult: 3731, senior: 1866, child: 2798 }
-        };
-
-        // 計算機票成本
-        const totalCost =
-            adults * ticketPrices[location].adult +
-            seniors * ticketPrices[location].senior +
-            children * ticketPrices[location].child;
-
-        cost.textContent = `機票成本： ${totalCost} = ${adults} * ${ticketPrices[location].adult} +
-            ${seniors} * ${ticketPrices[location].senior} +
-            ${children} * ${ticketPrices[location].child}`;
 
         //計算船票成本
 
@@ -769,7 +587,7 @@
         roomDisplay.textContent = `房間成本： ${roomPrice} = ( ${q2} * 2625 + ${q4} * 3900 + ${q0} * 500 ) * ${dal}`;
 
         // 總報價
-        allcost = totalCost + boatcost + moto_cost + carPrice + carPrice1 + roomPrice
+        allcost =  boatcost + moto_cost + carPrice + carPrice1 + roomPrice
         allDisplay.textContent = `總價： ${allcost}`;
         allDisplay1.textContent = `總價： ${allcost}`;
 
@@ -825,8 +643,6 @@
 <script src="/assets/js/jquery-2.2.4.min.js"></script>
 <script src="/assets/js/simpleCart.js"></script>
 <script async src="/assets/js/main.js"></script>
-
-
 
 
 
