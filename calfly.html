@@ -10,11 +10,11 @@
   <script src="/assets/js/3f950a1575.js" crossorigin="anonymous"></script>
   
   <meta name="description"
-    content="報價單                            出發日期                                        回程日期                                                    雙人房                       ... ">
+    content="報價單                            出發日期                                        回程日期                                                雙人房                           ... ">
   <title>報價單</title>
   <meta property="og:title" content="報價單">
   <meta property="og:description"
-    content="報價單                            出發日期                                        回程日期                                                    雙人房                       ... ">
+    content="報價單                            出發日期                                        回程日期                                                雙人房                           ... ">
   <meta property="og:image"
     content="https://www.iyou.tw/assets/images/og-logo-1.jpg">
   
@@ -53,7 +53,7 @@
             <label class="pt-2">回程日期</label>
             <input type="date" class=" form-control text-start" id="endDate" onchange="calculatePrice()" />
         </div>
-        
+    </div>
 
     <div class="row">
 
@@ -471,13 +471,14 @@
             <p id="carDisplay"></p>
             <p id="carDisplay1"></p>
             <p id="allDisplay1"></p>
-           
+             <p id="aveDisplay1"></p>
+
+
         </div>
     </div>
 
 
 </div>
-
 
 <script>
 
@@ -513,10 +514,15 @@
             seniors * ticketPrices[location].senior +
             children * ticketPrices[location].child;
 
+            if (totalCost === 0) {
+            cost.style.display = 'none';
+        } else {
+            cost.style.display = 'block';
+           
         cost.textContent = `機票成本： ${totalCost} = ${adults} * ${ticketPrices[location].adult} +
             ${seniors} * ${ticketPrices[location].senior} +
             ${children} * ${ticketPrices[location].child}`;
-
+        }
         //計算船票成本
 
         const startDateInput = document.getElementById('startDate');
@@ -533,16 +539,21 @@
         const today = new Date();
         const todayTimestamp = today.getTime();
 
-       
 
-        
+
+
 
         // 計算機車成本
         dal = (endTimestamp - startTimestamp) / (24 * 60 * 60 * 1000);
         moto_cost = (dal * 250 + 150) * moto_number + 100 * Math.ceil(moto_number / 3);
         jc = Math.ceil(moto_number / 3);
-        dalta.textContent = `機車成本： ${moto_cost} = (${dal} * 250 + 150) * ${moto_number} + 100 *${jc} `;
 
+        if (moto_cost === 0) {
+            dalta.style.display = 'none';
+        } else {
+            dalta.style.display = 'block';
+            dalta.textContent = `機車成本： ${moto_cost} = (${dal} * 250 + 150) * ${moto_number} + 100 *${jc} `;
+        }
         //計算汽車成本
         const carType = document.getElementById('carType').value;
         const quantity = parseInt(document.getElementById('quantity').value);
@@ -557,8 +568,12 @@
         };
 
         const carPrice = prices[carType] * quantity * (dal + 1);
-        carDisplay.textContent = `汽車成本： ${carPrice} = ${prices[carType]} * ${quantity} * (${dal} + 1)`;
-
+        if (carPrice === 0) {
+            carDisplay.style.display = 'none';
+        } else {
+            carDisplay.style.display = 'block';
+            carDisplay.textContent = `汽車成本： ${carPrice} = ${prices[carType]} * ${quantity} * (${dal} + 1)`;
+        }
         const carType1 = document.getElementById('carType1').value;
         const quantity1 = parseInt(document.getElementById('quantity1').value);
 
@@ -572,19 +587,32 @@
         };
 
         const carPrice1 = prices[carType1] * quantity1 * (dal + 1);
-        carDisplay1.textContent = `汽車成本： ${carPrice1} = ${prices[carType1]} * ${quantity1} * (${dal} + 1)`;
+        const carDisplay1 = document.getElementById('carDisplay1');
+
+        if (carPrice1 === 0) {
+            carDisplay1.style.display = 'none';
+        } else {
+            carDisplay1.style.display = 'block';
+            carDisplay1.textContent = `汽車成本： ${carPrice1} = ${prices[carType1]} * ${quantity1} * (${dal} + 1)`;
+        }
 
         //計算房間成本
         const q2 = parseInt(document.getElementById('q2').value);
         const q4 = parseInt(document.getElementById('q4').value);
         const q0 = parseInt(document.getElementById('q0').value);
         const roomPrice = (q2 * 2625 + q4 * 3900 + q0 * 500) * dal;
-        roomDisplay.textContent = `房間成本： ${roomPrice} = ( ${q2} * 2625 + ${q4} * 3900 + ${q0} * 500 ) * ${dal}`;
-
+        if (roomPrice === 0) {
+            roomDisplay.style.display = 'none';
+        } else {
+            roomDisplay.style.display = 'block';
+            roomDisplay.textContent = `房間成本： ${roomPrice} = ( ${q2} * 2625 + ${q4} * 3900 + ${q0} * 500 ) * ${dal}`;
+        }
         // 總報價
-        allcost = totalCost  + moto_cost + carPrice + carPrice1 + roomPrice
+        allcost = totalCost + moto_cost + carPrice + carPrice1 + roomPrice;
+        avecost=allcost/(adults+seniors+children);
         allDisplay.textContent = `總價： ${allcost}`;
         allDisplay1.textContent = `總價： ${allcost}`;
+        aveDisplay1.textContent = `人均： ${avecost}`;
 
 
     }
@@ -627,7 +655,7 @@
 
 
 </script>
-</div>
+
 
       
       </div>
