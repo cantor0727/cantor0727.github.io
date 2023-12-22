@@ -10,11 +10,11 @@
   <script src="/assets/js/3f950a1575.js" crossorigin="anonymous"></script>
   
   <meta name="description"
-    content=" ">
+    content="選擇日期： ">
   <title>奎壁山摩西分海查詢系統</title>
   <meta property="og:title" content="奎壁山摩西分海查詢系統">
   <meta property="og:description"
-    content=" ">
+    content="選擇日期： ">
   <meta property="og:image"
     content="https://www.iyou.tw/assets/images/posts/logo2.jpg">
   
@@ -175,38 +175,111 @@
   </header>
 
 
-  <div class="col-12 pt-5">
+  <!-- 選擇日期的 input 元素 -->
+<div class="d-grid gap-2 col-8 col-md-6 mx-auto">
+    <div class="input-group mb-3">
+        <label class="input-group-text" for="date-input">選擇日期：</label>
+        <input class="form-control text-start" type="date" id="date-input" onchange="updateChart()" />
+    </div>
+</div>
+
+<div class="col-12 pt-5">
     <div id="main" style="width: 100%; height: 400px;"></div>
 </div>
+
 <script type="text/javascript">
 
     var myChart = echarts.init(document.getElementById('main'));
 
+    var data = [
+        { datetime: '2024-02-03 12:27', tideHeight: 70 },
+        { datetime: '2024-02-03 18:20', tideHeight: 10 },
+        { datetime: '2024-02-03 22:12', tideHeight: 80 },
+        { datetime: '2024-02-03 23:56', tideHeight: 20 },
+        { datetime: '2024-02-04 12:27', tideHeight: 70 },
+        { datetime: '2024-02-04 18:20', tideHeight: 10 },
+        { datetime: '2024-02-04 22:12', tideHeight: 80 },
+        { datetime: '2024-02-04 23:56', tideHeight: 20 },
+        { datetime: '2024-02-05 09:22', tideHeight: -20 },
+        { datetime: '2024-02-05 15:33', tideHeight: 90 },
+
+    ];
+
+    // 將字符串格式的日期轉換為 JavaScript Date 對象
+    data.forEach(item => {
+        item.datetime = new Date(item.datetime);
+    });
+
+    // 配置圖表選項
     var option = {
         title: {
-            text: 'ECharts 入门示例'
-        },
-        tooltip: {},
-        legend: {
-            data: ['销量']
+            text: '潮汐高度變化圖表'
         },
         xAxis: {
             type: 'time',
-            name: '潮汐时间'
+
         },
-        yAxis: {},
-        series: [
-            {
-                name: '销量',
-                type: 'line',
-                smooth: true,
-                data: [5, 20, 36, 10, 10, 20]
-            }
-        ]
+        yAxis: {
+            type: 'value',
+            name: '潮汐高度（cm）'
+        },
+        series: [{
+            name: '潮汐高度',
+            type: 'line',
+            // 數據綁定
+            data: data.map(item => [item.datetime, item.tideHeight]),
+            smooth: true,
+            
+        }]
     };
+
 
     myChart.setOption(option);
 
+
+    // 獲取日期 input 元素
+    var dateInput = document.getElementById('date-input');
+
+    function updateChart() {
+        // 獲取選中的日期
+        var selectedDate = new Date(dateInput.value);
+
+        // 過濾數據以僅顯示所選日期的數據
+        var filteredData = data.filter(item => {
+            var date = new Date(item.datetime);
+            return date.toDateString() === selectedDate.toDateString();
+        });
+
+        // 刪除舊的圖表
+        myChart.dispose();
+
+        // 創建新的圖表
+        myChart = echarts.init(document.getElementById('main'));
+
+        // 配置新的圖表選項
+        var option = {
+            title: {
+                text: '潮汐高度變化圖表'
+            },
+            xAxis: {
+                type: 'time'
+            },
+            yAxis: {
+                type: 'value',
+                name: '潮汐高度（cm）'
+            },
+            series: [{
+                name: '潮汐高度',
+                type: 'line',
+                data: filteredData.map(item => [item.datetime, item.tideHeight]),
+                smooth: true,
+               
+            }]
+        };
+
+        // 設置新的圖表選項並渲染
+        myChart.setOption(option);
+    }
 
 
     window.addEventListener('resize', function () {
