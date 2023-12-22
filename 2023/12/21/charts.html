@@ -10,11 +10,11 @@
   <script src="/assets/js/3f950a1575.js" crossorigin="anonymous"></script>
   
   <meta name="description"
-    content="A banana is an edible fruit – botanically a berry – produced by several kindsof large herbaceous flowering plants in the genus Musa.In some countries, banana... ">
-  <title>bananas</title>
-  <meta property="og:title" content="bananas">
+    content=" ">
+  <title>奎壁山摩西分海查詢系統</title>
+  <meta property="og:title" content="奎壁山摩西分海查詢系統">
   <meta property="og:description"
-    content="A banana is an edible fruit – botanically a berry – produced by several kindsof large herbaceous flowering plants in the genus Musa.In some countries, banana... ">
+    content=" ">
   <meta property="og:image"
     content="https://www.iyou.tw/assets/images/posts/logo2.jpg">
   
@@ -23,11 +23,12 @@
   <link rel="apple-touch-icon" href="/assets/images/apple-logo.jpg">
 
 
-  <meta property="og:url" content="https://www.iyou.tw/2018/08/20/bananas-copy.html">
+  <meta property="og:url" content="https://www.iyou.tw/2023/12/21/charts.html">
   <meta property="og:type" content="website">
 
-
-
+  
+  <script src="/assets/js/echarts.js"></script>
+ 
 
 
 </head>
@@ -166,26 +167,53 @@
             <article class="card mb-4">
   <header class="card-header text-center">
     <div class="card-meta">
-      <time >20 Aug 2018</time> 
+      <time >21 Dec 2023</time> 
     </div>
     <a href="">
-      <h1 class="card-title">bananas</h1>
+      <h1 class="card-title">奎壁山摩西分海查詢系統</h1>
     </a>
   </header>
 
 
-  <p>A banana is an edible fruit – botanically a berry – produced by several kinds
-of large herbaceous flowering plants in the genus Musa.</p>
+  <div class="col-12 pt-5">
+    <div id="main" style="width: 100%; height: 400px;"></div>
+</div>
+<script type="text/javascript">
 
-<p>In some countries, bananas used for cooking may be called “plantains”,
-distinguishing them from dessert bananas. The fruit is variable in size, color,
-and firmness, but is usually elongated and curved, with soft flesh rich in
-starch covered with a rind, which may be green, yellow, red, purple, or brown
-when ripe.</p>
+    var myChart = echarts.init(document.getElementById('main'));
 
-<p><img src="/assets/images/posts/logo2.jpg" alt="沙漠中的岩石图片" />
-<img src="/assets/images/posts/logo1.png" alt="沙漠中的岩石图片" />
-<img src="http://fakeimg.pl/440x300/?text=PJCHENder" alt="這是一張圖" /></p>
+    var option = {
+        title: {
+            text: 'ECharts 入门示例'
+        },
+        tooltip: {},
+        legend: {
+            data: ['销量']
+        },
+        xAxis: {
+            type: 'time',
+            name: '潮汐时间'
+        },
+        yAxis: {},
+        series: [
+            {
+                name: '销量',
+                type: 'line',
+                smooth: true,
+                data: [5, 20, 36, 10, 10, 20]
+            }
+        ]
+    };
+
+    myChart.setOption(option);
+
+
+
+    window.addEventListener('resize', function () {
+        myChart.resize();
+    });
+
+</script>
 
 
 

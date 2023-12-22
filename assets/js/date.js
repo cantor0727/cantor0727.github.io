@@ -11,4 +11,5 @@
    currentDateInput.value = today;
 
    // 设置最小日期为今天
-   currentDateInput.min = today;
+   currentDateInput.setAttribute('min', today);
+  //  currentDateInput.min = today;
