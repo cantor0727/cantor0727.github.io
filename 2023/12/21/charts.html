@@ -10,13 +10,13 @@
   <script src="/assets/js/3f950a1575.js" crossorigin="anonymous"></script>
   
   <meta name="description"
-    content="選擇日期： ">
+    content="選擇日期：                注意事項說明    本區域陸連島步行每日實施開放管制，詳如公告標示，開放時間為上午 08:00 至下午 17:30，旺季期間（4 至 9 月）公告特定日延長開放時間為上午 06:00 至下午 18:30。實際情形請依現場工作人員指示通行。    若欲參考安全通行時段，約為... ">
   <title>奎壁山摩西分海查詢系統</title>
   <meta property="og:title" content="奎壁山摩西分海查詢系統">
   <meta property="og:description"
-    content="選擇日期： ">
+    content="選擇日期：                注意事項說明    本區域陸連島步行每日實施開放管制，詳如公告標示，開放時間為上午 08:00 至下午 17:30，旺季期間（4 至 9 月）公告特定日延長開放時間為上午 06:00 至下午 18:30。實際情形請依現場工作人員指示通行。    若欲參考安全通行時段，約為... ">
   <meta property="og:image"
-    content="https://www.iyou.tw/assets/images/posts/logo2.jpg">
+    content="https://www.iyou.tw/assets/images/posts/tour1-4.jpg">
   
 
   <link rel="icon" href="/assets/images/Favicon.png" type="image/png">
@@ -28,7 +28,8 @@
 
   
   <script src="/assets/js/echarts.js"></script>
- 
+  <script src="/assets/js/tchart.js"></script>
+  
 
 
 </head>
@@ -177,70 +178,85 @@
 
   <!-- 選擇日期的 input 元素 -->
 <div class="d-grid gap-2 col-8 col-md-6 mx-auto">
-    <div class="input-group mb-3">
-        <label class="input-group-text" for="date-input">選擇日期：</label>
-        <input class="form-control text-start" type="date" id="date-input" onchange="updateChart()" />
+    <div class="input-group ">
+        <label class="input-group-text" for="currentDate">選擇日期：</label>
+        <input class="form-control text-start" type="date" id="currentDate" onchange="updateChart(); checkDate();" />
     </div>
 </div>
 
-<div class="col-12 pt-5">
-    <div id="main" style="width: 100%; height: 400px;"></div>
+<div class="col-12 pt-3">
+    <div id="main" style="width: 100%; height: 500px;"></div>
 </div>
+
+<h3>注意事項說明</h3>
+<p>
+<ui>
+    <li>本區域陸連島步行每日實施開放管制，詳如公告標示，開放時間為上午 08:00 至下午 17:30，旺季期間（4 至 9 月）公告特定日延長開放時間為上午 06:00 至下午 18:30。實際情形請依現場工作人員指示通行。</li>
+    <li>若欲參考安全通行時段，約為滿潮後 3 小時至乾潮後 2 小時期間，惟現地易受海象及風力等因素影響，仍請依現地管制時間通行，下午潮汐若未足 1 小時通行時間，則不予開放。</li>
+    <li>本表之資料來源為交通部中央氣象局 112 年澎湖馬公潮汐預報表。</li>
+</ui>
+</p>
+
+<p>潮汐高度資料來源： <a href="https://www.cwa.gov.tw/V8/C/"> 交通部中央氣象署-海象資料-潮汐表</a></p>
+<p>步道時間資料來源： <a href="https://www.penghu-nsa.gov.tw/TravelGuide/Tidenew"> 澎湖國家風景區管理處-旅遊指南-潮汐表</a></p>
+
+<h3>建議作法</h3>
+<p>可以看以下的直播：「摩西分海即時影像-北寮奎壁山」，及時了解動態訊息</p>
+<div class="embed-container">
+    <iframe src="https://www.youtube.com/embed/fR3DGNGcLJk" width="700" height="480" frameborder="0" allowfullscreen="true">
+    </iframe>
+  </div>
 
 <script type="text/javascript">
 
     var myChart = echarts.init(document.getElementById('main'));
 
-    var data = [
-        { datetime: '2024-02-03 12:27', tideHeight: 70 },
-        { datetime: '2024-02-03 18:20', tideHeight: 10 },
-        { datetime: '2024-02-03 22:12', tideHeight: 80 },
-        { datetime: '2024-02-03 23:56', tideHeight: 20 },
-        { datetime: '2024-02-04 12:27', tideHeight: 70 },
-        { datetime: '2024-02-04 18:20', tideHeight: 10 },
-        { datetime: '2024-02-04 22:12', tideHeight: 80 },
-        { datetime: '2024-02-04 23:56', tideHeight: 20 },
-        { datetime: '2024-02-05 09:22', tideHeight: -20 },
-        { datetime: '2024-02-05 15:33', tideHeight: 90 },
+    //input的min和max
+    function checkDate() {
+        var selectedDate = new Date(document.getElementById('currentDate').value);
+        var minDate = new Date('2023-01-01'); // 设置最小日期
+        var maxDate = new Date('2024-04-30'); // 设置最大日期
 
-    ];
+        if (selectedDate < minDate || selectedDate > maxDate) {
+            alert('請選擇 2023-01-01 至 2024-04-30 的範圍');
+            document.getElementById('currentDate').value = today; // 設置日期為今天
+
+            // 更新圖表
+            updateChart();
+
+        }
+    }
+
+
+    // 获取当前日期并格式化为 YYYY-MM-DD
+    var today = new Date();
+    var dd = String(today.getDate()).padStart(2, '0');
+    var mm = String(today.getMonth() + 1).padStart(2, '0'); // 月份是从 0 开始的
+    var yyyy = today.getFullYear();
+
+    today = yyyy + '-' + mm + '-' + dd;
+
+    // 设置当前日期为日期输入框的值
+    var currentDateInput = document.getElementById('currentDate');
+    currentDateInput.value = today;
+
+
+
+
 
     // 將字符串格式的日期轉換為 JavaScript Date 對象
     data.forEach(item => {
         item.datetime = new Date(item.datetime);
     });
 
-    // 配置圖表選項
-    var option = {
-        title: {
-            text: '潮汐高度變化圖表'
-        },
-        xAxis: {
-            type: 'time',
-
-        },
-        yAxis: {
-            type: 'value',
-            name: '潮汐高度（cm）'
-        },
-        series: [{
-            name: '潮汐高度',
-            type: 'line',
-            // 數據綁定
-            data: data.map(item => [item.datetime, item.tideHeight]),
-            smooth: true,
-            
-        }]
-    };
-
-
-    myChart.setOption(option);
 
 
     // 獲取日期 input 元素
-    var dateInput = document.getElementById('date-input');
+    var dateInput = document.getElementById('currentDate');
 
     function updateChart() {
+
+
         // 獲取選中的日期
         var selectedDate = new Date(dateInput.value);
 
@@ -250,19 +266,76 @@
             return date.toDateString() === selectedDate.toDateString();
         });
 
+        var filteredData_open = [];
+
+        //格式涵數
+        function formatTime(timeStr) {
+            const time = new Date(timeStr);
+            const hours = time.getHours().toString().padStart(2, '0');
+            const minutes = time.getMinutes().toString().padStart(2, '0');
+            return `${hours}:${minutes}`;
+        }
+
+
+
+
+
+
         // 刪除舊的圖表
         myChart.dispose();
 
         // 創建新的圖表
         myChart = echarts.init(document.getElementById('main'));
 
+
+
+
+
         // 配置新的圖表選項
         var option = {
+            // 線的顏色
+            visualMap: {
+                show: false, // 不顯示圖標
+                pieces: [
+                    {
+                        gt: -200,
+                        lte: 0,
+                        color: '#93CE07'
+                    },
+                    {
+                        gt: 0,
+                        lte: 200,
+                        color: '#FBDB0F'
+                    }
+
+                ],
+            },
+
             title: {
-                text: '潮汐高度變化圖表'
+                text: '潮汐高度變化圖表',
+                left: 'center'
+            },
+            tooltip: {
+                trigger: 'axis',
+                axisPointer: {
+                    animation: false,
+                    label: {
+                        backgroundColor: '#505765'
+                    }
+                }
             },
             xAxis: {
-                type: 'time'
+                type: 'time',
+                axisLabel: {
+                    formatter: function (value) {
+                        const date = new Date(value);
+                        const hours = date.getHours();
+                        const minutes = date.getMinutes();
+                        // 如果需要精确到分钟数，可以根据需要格式化时间
+                        return `${hours}:${minutes}`;
+                    },
+
+                }
             },
             yAxis: {
                 type: 'value',
@@ -271,9 +344,60 @@
             series: [{
                 name: '潮汐高度',
                 type: 'line',
-                data: filteredData.map(item => [item.datetime, item.tideHeight]),
+
+                data: filteredData.map(item => {
+                    return {
+                        value: [item.datetime, item.tideHeight],
+
+                        symbolSize: 10,
+                        itemStyle: {
+                            color: item.tideHeight > 0 ? '#FBDB0F' : '#93CE07' // 滿潮為藍色，乾潮為橘色
+                        },
+                        label: {
+                            show: true,
+                            formatter: function (params) {
+                                return item.tideHeight > 0 ? '滿潮' : '乾潮'; // 標示「滿潮」或「乾潮」
+                            },
+                            position: 'top' // 標籤位置在數據點上方
+                        }
+                    };
+                }),
+
                 smooth: true,
-               
+
+                markArea: {
+                    itemStyle: {
+                        color: 'rgba(0, 176, 80, 0.3)'
+                    },
+                    data: openx.filter(item => {
+                        var date_open = new Date(item.opentime);
+                        var date_close = new Date(item.closetime);
+
+                        return (
+                            date_open.toDateString() === selectedDate.toDateString() &&
+                            date_close.toDateString() === selectedDate.toDateString()
+                        );
+                    }).map(item => {
+                        return [
+                            {
+                                name: `步道開放 ${formatTime(item.opentime)}-${formatTime(item.closetime)}`,
+                                xAxis: item.opentime
+                            },
+                            {
+                                xAxis: item.closetime
+                            }
+                        ];
+                    }),
+                    label: {
+                        show: true,
+                        position: 'top', // 或者其他位置，比如 'insideTop'
+                        fontSize: 15, // 设置字体大小
+                        color: 'red' // 设置字体颜色
+                        // 可以设置更多样式，比如 fontFamily、fontWeight 等
+                    }
+                }
+
+
             }]
         };
 
@@ -285,7 +409,7 @@
     window.addEventListener('resize', function () {
         myChart.resize();
     });
-
+    updateChart()
 </script>
 
 
@@ -433,6 +557,7 @@
 <script src="/assets/js/jquery-2.2.4.min.js"></script>
 <script src="/assets/js/simpleCart.js"></script>
 <script async src="/assets/js/main.js"></script>
+
 
 
 
