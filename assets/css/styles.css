@@ -209,6 +209,14 @@ a:hover {
   -webkit-box-orient: vertical;
 }
 
+.post-excerpt1 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 6; /* 限制顯示的行數 */
+  -webkit-box-orient: vertical;
+}
+
 .links {
   color: #2BAFB9 !important;
 }

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/pikaday/css/pikaday.css">
+  <script src="https://cdn.jsdelivr.net/npm/pikaday/pikaday.js"></script>
+	<script src="/assets/js/jquery-2.2.4.min.js"></script>
+	<script src="/assets/js/moment.js"></script>
+</head>
+
+<body>
+	
+	<div class="input">
+	   选择日期：<input type="text" id="datepicker">
+	</div>
+	
+
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      var i18n = { // 本地化
+        previousMonth: '',
+        nextMonth: '',
+        months: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'],
+        weekdays: ['周日', '周一', '周二', '周三', '周四', '周五', '周六'],
+        weekdaysShort: ['日', '一', '二', '三', '四', '五', '六']
+      }
+      var datepicker = new Pikaday({
+        field: jQuery('#datepicker')[0],
+        minDate: new Date(),  //最小时间 new Date() 能选择的从今天开始，new Date(new Date().getTime() + 86400000) 从明天开始选择  
+        maxDate: new Date('2999-12-31'), //能选择的最大时间
+        yearRange: [2021, 2999], //选择器显示的时间段
+        i18n: i18n,
+        format: 'YYYY-MM-DD',
+        onSelect: function () {
+          //发现使用文档中的this.getMoment()会报错，查看源码._d 是选择的日期，引入momentjs格式化日期，然后显示到input框中
+          var date = date = moment(this._d).format('YYYY-MM-DD'); //生成的时间格式化成 2021-04-15
+          $('#datepicker').val(date);
+        }
+      });
+    }); </script>
+    
+</body >
+
+</html >

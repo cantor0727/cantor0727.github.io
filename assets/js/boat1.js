@@ -19,7 +19,7 @@ function calculatePrice() {
 
     const startDay = startDate.getDay();
     const endDay = endDate.getDay();
-    let totalPrice = 1400;
+    let totalPrice = 1500;
     SwPrice = 0;
     SsPrice = 0;
     EwPrice = 0;
