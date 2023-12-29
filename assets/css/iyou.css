@@ -49,10 +49,10 @@
     --bs-black-rgb: 0, 0, 0;
     --bs-body-color-rgb: 33, 37, 41;
     --bs-body-bg-rgb: 255, 255, 255;
-    --bs-font-sans-serif: "PT Sans Caption", sans-serif;
+    --bs-font-sans-serif: "Noto Sans TC", -apple-system, BlinkMacSystemFont, "PingFang TC", "Segoe UI", Roboto, Ubuntu, "Helvetica Neue","Microsoft JhengHei","Microsoft YaHei", sans-serif;
     --bs-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
     --bs-gradient: linear-gradient(180deg, hsla(0, 0%, 100%, 0.15), hsla(0, 0%, 100%, 0));
-    --bs-body-font-family: PT Sans Caption, sans-serif;
+    --bs-body-font-family:"Noto Sans TC", -apple-system, BlinkMacSystemFont, "PingFang TC", "Segoe UI", Roboto, Ubuntu, "Helvetica Neue","Microsoft JhengHei","Microsoft YaHei", sans-serif;
     --bs-body-font-size: 1rem;
     --bs-body-font-weight: 400;
     --bs-body-line-height: 1.5;
@@ -109,7 +109,7 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: "PT Serif", serif;
+    font-family: "Noto Sans TC", -apple-system, BlinkMacSystemFont, "PingFang TC", "Segoe UI", Roboto, Ubuntu, "Helvetica Neue","Microsoft JhengHei","Microsoft YaHei", sans-serif;
     font-weight: 700;
     line-height: 1.2;
     margin-bottom: .5rem;
@@ -6352,7 +6352,7 @@ fieldset:disabled .btn {
 .tooltip {
     word-wrap: break-word;
     display: block;
-    font-family: PT Sans Caption, sans-serif;
+    font-family:"Noto Sans TC", -apple-system, BlinkMacSystemFont, "PingFang TC", "Segoe UI", Roboto, Ubuntu, "Helvetica Neue","Microsoft JhengHei","Microsoft YaHei", sans-serif;
     font-size: .765625rem;
     font-style: normal;
     font-weight: 400;
@@ -6479,7 +6479,7 @@ fieldset:disabled .btn {
     border: 1px solid rgba(0, 0, 0, .2);
     border-radius: 0;
     display: block;
-    font-family: PT Sans Caption, sans-serif;
+    font-family: "Noto Sans TC", -apple-system, BlinkMacSystemFont, "PingFang TC", "Segoe UI", Roboto, Ubuntu, "Helvetica Neue","Microsoft JhengHei","Microsoft YaHei", sans-serif;
     font-size: .765625rem;
     font-style: normal;
     font-weight: 400;
@@ -12167,7 +12167,7 @@ label {
 }
 
 .navbar-brand {
-    font-family: "PT Serif", serif;
+    font-family: "Noto Sans TC", -apple-system, BlinkMacSystemFont, "PingFang TC", "Segoe UI", Roboto, Ubuntu, "Helvetica Neue","Microsoft JhengHei","Microsoft YaHei", sans-serif;
     font-weight: 700;
     text-transform: lowercase
 }
