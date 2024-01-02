@@ -230,4 +230,9 @@ a:hover {
   transform: translateY(-6px);
 }
 
+/* 例如，导航栏设置更高的 z-index */
+.navbar {
+  z-index: 9999; /* 设置一个较高的值 */
+}
+
 /*# sourceMappingURL=styles.css.map */
