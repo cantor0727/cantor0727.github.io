@@ -42,7 +42,8 @@
             <div class="col-lg-8 mx-auto p-4 py-md-2 ">
 
     <header class="d-flex align-items-center pb-3 mb-3 border-bottom">
-        <img src="/assets/images/logo.webp" alt="logo圖" width="175" height="50" />
+        <img id="first-image" src="/assets/images/logo.webp" alt="logo圖" width="175" height="50" onclick="toggleImage()" />
+        <img id="second-image" src="/assets/images/idlefish-logo.png" alt="logo圖" width="212" height="50" onclick="toggleImage()" style="display: none;" />
         <span class="fs-3 mx-auto">報價單</span>
     </header>
     <div class="row">
@@ -653,6 +654,19 @@
 
     updateMinReturnDate();
 
+//換圖的程式
+function toggleImage() {
+    var firstImage = document.getElementById('first-image');
+    var secondImage = document.getElementById('second-image');
+
+    if (firstImage.style.display !== 'none') {
+        firstImage.style.display = 'none';
+        secondImage.style.display = 'inline-block'; // or 'block' depending on your layout
+    } else {
+        secondImage.style.display = 'none';
+        firstImage.style.display = 'inline-block'; // or 'block' depending on your layout
+    }
+}
 
 
 </script>
